@@ -16,6 +16,7 @@
       body{
         font-family: monogram, monospace;
         font-size: 2rem;
+        position: center;
       }
 
       #textbox{
@@ -57,10 +58,13 @@
       .note-container {
         position: absolute;
         left: 5%;
-        top: 1vh;
+        top: 10vh;
         display: flex;
         flex-direction: column;  /* Stacks items vertically */
         gap: 5px;  /* Adds spacing between elements */
+      }
+      .game {
+
       }
 
 .note {
@@ -79,9 +83,9 @@
     <div id="app">
       <div id="ui">
         <div class="note-container">
-          <p class="note">Cognitive Game for Understanding Human Behaviour</p>
-          <p class="note">Demo Map 1</p>
-          <p class="note">Tap/Click around to move</p>
+          <!--  <p class="note">Cognitive Game for Understanding Human Behaviour</p>
+          <p class="note">Demo Map 1</p> -->
+          <p class="note">Tap/Click around to move</p> 
         </div>  
         <div id="chatbox">
           <div id="messages"></div>
@@ -101,6 +105,6 @@
       <canvas id="game"></canvas>
     </div>
     <!-- change path -->
-    <script type="module" src="/Users/ashwinshanmugam/Documents/UIUC/Research/Collaborative-Foraging-Game/public/scripts/game.js"></script>
+    <script type="module" src="/Users/sheena/Desktop/info research/re/Collaborative-Foraging-Game/public/scripts/game.js"></script>
   </body>
 </html>
