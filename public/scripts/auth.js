@@ -1,5 +1,6 @@
 import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-import { app } from "/Users/sheena/Desktop/info research/re/Collaborative-Foraging-Game/src/firebaseConfig.js"; // Change path 
+// import { app } from "/Users/sheena/Desktop/info research/Collaborative-Foraging-Game/src/firebaseConfig.js"; // Change path 
+import { app } from "../../src/firebaseConfig.js";
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
