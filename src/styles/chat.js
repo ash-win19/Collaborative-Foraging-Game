@@ -1,4 +1,4 @@
-import { db, auth } from "./firebase.js";
+import db from "./firebase.js";
 import { doc, updateDoc, getDoc, onSnapshot, arrayUnion } from "firebase/firestore";
 
 const roomId = localStorage.getItem("roomId");
