@@ -1,7 +1,4 @@
-// change path
-// import { scaleFactor, dialogueData } from "/Users/sheena/Desktop/info research/Collaborative-Foraging-Game/src/constants.js";
-// import k from "/Users/sheena/Desktop/info research/Collaborative-Foraging-Game/src/kaboomCtx.js";
-// import { displayDialogue, setCamScale } from "/Users/sheena/Desktop/info research/Collaborative-Foraging-Game/src/utils.js";
+
 import { scaleFactor, dialogueData } from "./constants.js";
 import k from "./kaboomCtx.js";
 import { displayDialogue, setCamScale } from "./utils.js";
@@ -19,7 +16,7 @@ onSnapshot(doc(db, "rooms", roomId), (docSnap) => {
 
     const playerMap = user.uid === gameData.player1 ? "map1.png" : "map2.png";
     document.getElementById("game").style.backgroundImage = `url('/assets/maps/${playerMap}')`;
-});
+}); 
 
 k.loadSprite("spritesheet", "./spritesheet.png", {
   sliceX: 39,

@@ -52,7 +52,7 @@ document.getElementById("googleSignInBtn").addEventListener("click", () => {
 
 // Guest Login (Assign random username)
 document.getElementById("guestLoginBtn").addEventListener("click", () => {
-    
+    console.log("guest sing in");
     const guestUser = {
         uid: "guest_" + Math.floor(Math.random() * 10000),
         displayName: "Guest_" + Math.floor(Math.random() * 10000)
