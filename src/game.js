@@ -1,10 +1,22 @@
-// change path
-import { scaleFactor, dialogueData } from "/Users/sheena/Desktop/info research/Collaborative-Foraging-Game/src/constants.js";
-import k from "/Users/sheena/Desktop/info research/Collaborative-Foraging-Game/src/kaboomCtx.js";
-import { displayDialogue, setCamScale } from "/Users/sheena/Desktop/info research/Collaborative-Foraging-Game/src/utils.js";
-// import { scaleFactor, dialogueData } from "../../src/constants.js";
-// import k from "../../src/kaboomCtx.js";
-// import { displayDialogue, setCamScale } from "../../src/utils.js";
+
+import { scaleFactor, dialogueData } from "./constants.js";
+import k from "./kaboomCtx.js";
+import { displayDialogue, setCamScale } from "./utils.js";
+import { db } from "./firebaseConfig.js";
+import { doc, onSnapshot } from "firebase/firestore";
+import { getDoc, updateDoc } from "firebase/firestore";
+
+const roomId = sessionStorage.getItem("roomId");
+const user = JSON.parse(sessionStorage.getItem("user"));
+
+
+onSnapshot(doc(db, "rooms", roomId), (docSnap) => {
+    const gameData = docSnap.data();
+    if (!gameData) return;
+
+    const playerMap = user.uid === gameData.player1 ? "map1.png" : "map2.png";
+    document.getElementById("game").style.backgroundImage = `url('/assets/maps/${playerMap}')`;
+}); 
 
 k.loadSprite("spritesheet", "./spritesheet.png", {
   sliceX: 39,
@@ -207,6 +219,21 @@ k.scene("main", async () => {
       player.move(0, player.speed);
     }
   });
+});
+
+document.addEventListener("keydown", async (event) => {
+  if (event.key === "Enter") {
+      const message = prompt("Enter message:");
+      if (!message) return;
+
+      const roomRef = doc(db, "rooms", sessionStorage.getItem("roomId"));
+      const roomSnap = await getDoc(roomRef);
+      const roomData = roomSnap.data();
+
+      await updateDoc(roomRef, {
+          messages: [...roomData.messages, `${user.displayName}: ${message}`]
+      });
+  }
 });
 
 k.go("main");
