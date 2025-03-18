@@ -223,8 +223,8 @@ k.scene("main", async () => {
 
 document.addEventListener("keydown", async (event) => {
   if (event.key === "Enter") {
-      const message = prompt("Enter message:");
-      if (!message) return;
+      // const message = prompt("Enter message:");
+      // if (!message) return;
 
       const roomRef = doc(db, "rooms", sessionStorage.getItem("roomId"));
       const roomSnap = await getDoc(roomRef);
