@@ -78,24 +78,38 @@ onSnapshot(doc(db, "rooms", roomId), (docSnapshot) => {
     const user = JSON.parse(sessionStorage.getItem("user"));
 
     messages.forEach((m) => {
+        const messageWrapper = document.createElement("div");
+        messageWrapper.classList.add("message-wrapper");
+    
         const messageDiv = document.createElement("div");
         messageDiv.classList.add("message");
     
-        let senderName = m.sender; 
-     
         const user = JSON.parse(sessionStorage.getItem("user"));
-    
+        let senderName = m.sender;
+     
         if (user && m.sender === user.displayName) {
             messageDiv.classList.add("sent");
-            senderName = "me";  
+            senderName = "me";
         } else {
             messageDiv.classList.add("received");
         }
-    
+     
+        const time = new Date(m.timestamp).toLocaleTimeString([], {
+            hour: '2-digit',
+            minute: '2-digit',
+        });
+     
+        const timeElement = document.createElement("div");
+        timeElement.classList.add("timestamp");
+        timeElement.innerText = time;
+     
         messageDiv.innerHTML = `<b>${senderName}:</b> ${m.text}`;
-        messagesDiv.appendChild(messageDiv);
+     
+        messageWrapper.appendChild(timeElement);
+        messageWrapper.appendChild(messageDiv);
+        messagesDiv.appendChild(messageWrapper);
     });
-    
+     
  
     messagesDiv.scrollTop = messagesDiv.scrollHeight;  
 
@@ -103,8 +117,7 @@ onSnapshot(doc(db, "rooms", roomId), (docSnapshot) => {
         console.log("unreadCount: ", unreadCount);
         unreadCount++;
         messageBadge.innerText = unreadCount;
-        if (unreadCount != 0) messageBadge.style.display = "block"; // **确保 badge 可见**
+        if (unreadCount != 0) messageBadge.style.display = "block"; 
         console.log("New message received! Unread count:", unreadCount);
-    }
-    // 左右对话框 回车键
+    } 
 });
