@@ -102,23 +102,23 @@ function listenForGameStart(roomId) {
 const savedRoomId = sessionStorage.getItem("roomId");
 if (savedRoomId) listenForGameStart(savedRoomId);
 
-window.addEventListener("load", () => {
-    cleanExpiredRooms();
-});
+// window.addEventListener("load", () => {
+//     cleanExpiredRooms();
+// });
 
-//clear 
-async function cleanExpiredRooms() {
-    const now = Date.now();
-    const cutoff = now - 48 * 60 * 60 * 1000; // 48 hours in ms
+// //clear 
+// async function cleanExpiredRooms() {
+//     const now = Date.now();
+//     const cutoff = now - 48 * 60 * 60 * 1000; // 48 hours in ms
 
-    const roomsSnapshot = await getDocs(collection(db, "rooms"));
-    for (const docSnap of roomsSnapshot.docs) {
-        const data = docSnap.data();
-        const createdAt = data.createdAt;
+//     const roomsSnapshot = await getDocs(collection(db, "rooms"));
+//     for (const docSnap of roomsSnapshot.docs) {
+//         const data = docSnap.data();
+//         const createdAt = data.createdAt;
 
-        if (createdAt && now - createdAt > 48 * 60 * 60 * 1000) {
-            await deleteDoc(docSnap.ref);
-            console.log(`Deleted expired room: ${docSnap.id}`);
-        }
-    }
-}
+//         if (createdAt && now - createdAt > 48 * 60 * 60 * 1000) {
+//             await deleteDoc(docSnap.ref);
+//             console.log(`Deleted expired room: ${docSnap.id}`);
+//         }
+//     }
+// }
