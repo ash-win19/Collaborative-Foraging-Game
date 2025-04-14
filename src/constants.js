@@ -20,4 +20,19 @@ export const dialogueData = {
     library: `There are a lot of programming books on my shelves. There is even one in French (I also speak French btw).
     I probably only read one of them. Who else compulsively buys technical books without ever finishing them?`,
     exit: `If you want to exit JSLegendDev's portfolio, just close the tab.`,
+    couch: `KEYYYYYIf you want to exit JSLegendDev's portfolio, just close the tab.`,
+  };
+
+  export const quizData = {
+    level1: {
+      question: "What is 2 + 2?",
+      options: ["3", "4", "5", "6"],
+      correctAnswer: "4",
+    },
+    level2: {
+      question: "What is the capital of France?",
+      options: ["Paris", "London", "Berlin", "Madrid"],
+      correctAnswer: "Paris",
+    },
+    // Add more for additional levels
   };

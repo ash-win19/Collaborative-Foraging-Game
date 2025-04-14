@@ -40,7 +40,10 @@ document.getElementById("createRoomBtn").addEventListener("click", async () => {
             join_time: null
         },
         createdAt: Date.now(),
-        messages: []
+        messages: [],
+        player1QuizStatus: "unsolved",
+        player2QuizStatus: "unsolved",
+        currentLevel: 1
     });
     
 
