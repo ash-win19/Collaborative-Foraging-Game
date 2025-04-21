@@ -43,7 +43,21 @@ document.getElementById("createRoomBtn").addEventListener("click", async () => {
         messages: [],
         player1QuizStatus: "unsolved",
         player2QuizStatus: "unsolved",
-        currentLevel: 1
+        currentLevel: 1,
+        time: {
+            open_quiz1_A: null,
+            finish_quiz1_A: null,
+            open_quiz1_B: null,
+            finish_quiz1_B: null,
+            open_quiz2_A: null,
+            finish_quiz2_A: null,
+            open_quiz2_B: null,
+            finish_quiz2_B: null,
+            open_quiz3_A: null,
+            finish_quiz3_A: null,
+            open_quiz3_B: null,
+            finish_quiz3_B: null,
+        }
     });
     
 
@@ -104,24 +118,3 @@ function listenForGameStart(roomId) {
 // If reloading, ensure listener starts
 const savedRoomId = sessionStorage.getItem("roomId");
 if (savedRoomId) listenForGameStart(savedRoomId);
-
-// window.addEventListener("load", () => {
-//     cleanExpiredRooms();
-// });
-
-// //clear 
-// async function cleanExpiredRooms() {
-//     const now = Date.now();
-//     const cutoff = now - 48 * 60 * 60 * 1000; // 48 hours in ms
-
-//     const roomsSnapshot = await getDocs(collection(db, "rooms"));
-//     for (const docSnap of roomsSnapshot.docs) {
-//         const data = docSnap.data();
-//         const createdAt = data.createdAt;
-
-//         if (createdAt && now - createdAt > 48 * 60 * 60 * 1000) {
-//             await deleteDoc(docSnap.ref);
-//             console.log(`Deleted expired room: ${docSnap.id}`);
-//         }
-//     }
-// }
