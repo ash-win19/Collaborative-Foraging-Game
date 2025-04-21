@@ -31,7 +31,7 @@ quizUI.innerHTML = `
 `;
 document.body.appendChild(quizUI);
 
-function showQuiz(level) {
+async function showQuiz(level) {
   console.log("Showing quiz for level:", level);
   const quiz = quizData[`level${level}`];
   if (!quiz) {
@@ -41,6 +41,10 @@ function showQuiz(level) {
 
   quizUI.style.display = "block";
   document.getElementById("quiz-question").textContent = quiz.question;
+
+  // Record quiz open time
+  await recordQuizTime("open", level);
+
   const optionsDiv = document.getElementById("quiz-options");
   optionsDiv.innerHTML = "";
   quiz.options.forEach((option) => {
@@ -59,12 +63,24 @@ function showQuiz(level) {
     optionsDiv.appendChild(button);
   });
 }
+ 
+async function recordQuizTime(type, level) {
+  const playerSuffix = user.uid === gameData.player1 ? "A" : "B";
+  const field = `time.${type}_quiz${level}_${playerSuffix}`;
+  const roomRef = doc(db, "rooms", roomId);
+  const updateObj = {}; 
+  updateObj[field] = Date.now();
+  await updateDoc(roomRef, updateObj);
+}
 
 async function checkAnswer(selected, correct, level) {
   const feedback = document.getElementById("quiz-feedback");
   if (selected === correct) {
     feedback.textContent = "Correct!";
     quizUI.style.display = "none";
+
+    // Record finish time
+  await recordQuizTime("finish", level);
 
     // Update Firebase
     const roomRef = doc(db, "rooms", roomId);
