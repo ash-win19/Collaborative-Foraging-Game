@@ -25,14 +25,19 @@ export const dialogueData = {
 
   export const quizData = {
     level1: {
-      question: "What is 2 + 2?",
-      options: ["3", "4", "5", "6"],
-      correctAnswer: "4",
+      question: "How many trees are present in total",
+      options: ["8", "16", "24", "23"],
+      correctAnswer: "24",
     },
     level2: {
+      question: "How many windows are present in total?",
+      options: ["1", "2", "3", "4"],
+      correctAnswer: "3",
+    },
+    level3: {
       question: "What is the capital of France?",
       options: ["Paris", "London", "Berlin", "Madrid"],
       correctAnswer: "Paris",
-    },
+    }
     // Add more for additional levels
   };
