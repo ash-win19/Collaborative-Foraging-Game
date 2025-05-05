@@ -108,21 +108,21 @@
          "id":7,
          "name":"boundaries",
          "objects":[
-            {
-               "height":32,
-               "id":9,
-               "name":"quiz",
-               "rotation":0,
-               "type":"",
-               "visible":true,
-               "width":32,
-               "x":16,
-               "y":192
-              },
+                {
+                 "height":32,
+                 "id":9,
+                 "name":"quiz",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":16,
+                 "y":192
+                }, 
                 {
                  "height":48,
                  "id":2,
-                 "name":"",
+                 "name":"house",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -166,7 +166,7 @@
                 {
                  "height":48,
                  "id":6,
-                 "name":"",
+                 "name":"hint1",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -272,7 +272,8 @@
                  "width":16,
                  "x":208,
                  "y":176
-                }, 
+                },
+            
                 {
                  "height":240,
                  "id":24,
@@ -283,8 +284,7 @@
                  "width":16,
                  "x":240,
                  "y":0
-                },
-            
+                }, 
                 {
                  "height":16,
                  "id":25,

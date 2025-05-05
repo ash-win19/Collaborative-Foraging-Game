@@ -13,7 +13,10 @@ const roomId = sessionStorage.getItem("roomId");
 const chatInput = document.getElementById("chatInput");
 const sendChat = document.getElementById("sendChat");
 const messagesDiv = document.getElementById("messages"); 
-let unreadCount = -1;
+
+let unreadCount = 0;
+let lastMessageCount = 0;
+
 chatbox.style.display = "none";
 console.log("Script is running..."); 
  
@@ -113,11 +116,28 @@ onSnapshot(doc(db, "rooms", roomId), (docSnapshot) => {
  
     messagesDiv.scrollTop = messagesDiv.scrollHeight;  
 
-    if (chatbox.style.display === "none") {
-        console.log("unreadCount: ", unreadCount);
-        unreadCount++;
-        messageBadge.innerText = unreadCount;
-        if (unreadCount != 0) messageBadge.style.display = "block"; 
-        console.log("New message received! Unread count:", unreadCount);
-    } 
+    if (lastMessageCount === 0) {
+        // First time loading snapshot after refresh
+        lastMessageCount = messages.length;
+        console.log("First load: Setting lastMessageCount =", lastMessageCount);
+        return;  // <== Don't trigger unreadCount++ on first load
+    }
+    if (messages.length > lastMessageCount) {
+        if (chatbox.style.display === "none") {
+            console.log("unreadCount: ", unreadCount);
+            unreadCount += (messages.length - lastMessageCount);
+            messageBadge.innerText = unreadCount;
+            if (unreadCount != 0) messageBadge.style.display = "block"; 
+            console.log("New message received! Unread count:", unreadCount);
+        }
+    }
+    lastMessageCount = messages.length;
+    
+    // if (chatbox.style.display === "none") {
+    //     console.log("unreadCount: ", unreadCount);
+    //     unreadCount++;
+    //     messageBadge.innerText = unreadCount;
+    //     if (unreadCount != 0) messageBadge.style.display = "block"; 
+    //     console.log("New message received! Unread count:", unreadCount);
+    // } 
 });
