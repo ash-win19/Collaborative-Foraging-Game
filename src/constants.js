@@ -24,10 +24,10 @@ export const dialogueData = {
 
   export const quizData = {
     level1: {
-      question: "What is 2 + 2?",
-      options: ["3", "4", "5", "6"],
-      correctAnswer: "4",
-    },
+      question: "How many trees are present in total",
+      options: ["8", "16", "24", "23"],
+      correctAnswer: "24",
+    }, 
     level3: {
       question: "What is the correct answer for java function?",
       options: ["public addNumber(a, b){return a+b}", 
@@ -36,6 +36,6 @@ export const dialogueData = {
         "public void minus(a, b){return a-b;}"],
       correctAnswer_A: "public addNumber(int a, int b){return a+b}",
       correctAnswer_B: "public void minus(int a, int b){return a-b;}",
-    },
+    }, 
     // Add more for additional levels
   };

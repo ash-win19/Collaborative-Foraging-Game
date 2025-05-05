@@ -69,6 +69,17 @@
          "id":4,
          "name":"spawnpoints",
          "objects":[
+              {
+                     "height":32,
+                     "id":9,
+                     "name":"quiz",
+                     "rotation":0,
+                     "type":"",
+                     "visible":true,
+                     "width":32,
+                     "x":200,
+                     "y":200
+                    },
                 {
                  "height":0,
                  "id":40,
