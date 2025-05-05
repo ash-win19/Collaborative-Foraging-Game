@@ -1,26 +1,25 @@
 export const scaleFactor = 4;
 
-export const dialogueData = {
-    pc: `This is my PC. I work mostly in JavaScript/TypeScript these days.
-      I've made a couple of games in that language. I also like Golang and Python. Anyway regardless of the language, I just like programming.
-      Here is my <a href="https://github.com/jslegenddev" target="_blank">Github</a>!`,
-    "cs-degree": `This is my CS degree. I hung it on the wall because I'm proud of it. It was a very theoretical degree but I think it gave me a good foundation.`,
-    "sofa-table": `That's my sofa. I like to relax here and watch YouTube. 
-    I also make game programming tutorials on YouTube. Go sub to <a href="https://youtube.com/@jslegenddev" target="_blank">my channel</a>! (If you like the content)
-    You'll learn how I built this portfolio you're currently playing through!`,
-    tv: `That's my TV. I've been watching tech youtubers a lot recently like :
-     <a href="https://www.youtube.com/@ThePrimeTimeagen" target="_blank">Theprimeagen</a>, <a href="https://www.youtube.com/@t3dotgg" target="_blank">Theo - t3.gg</a>,
-    <a href="https://www.youtube.com/@PirateSoftware" target="_blank">PirateSoftware</a> (sometimes) and <a href="https://www.youtube.com/@MelkeyDev" target="_blank">Melkey</a>!`,
-    bed: `This where I sleep. Great ideas comes when I'm lying on my bed. When an idea strikes, I often have to write it down or else I won't be able to sleep because my mental energy is consumed by it.`,
-    resume: `This is my desk and on it is my resume. <a href="https://github.com/JSLegendDev/Resume/blob/main/JSLegend%20Resume-1.pdf" target="_blank">Check it out?</a>
-    Contact me at jslegend@protonmail.com if you have any interesting job opportunities!`,
-    projects: `Info about this portfolio : It's made with the Kaboom.js library which is a library for making games in JavaScript.
-    Text is rendered with HTML/CSS. So the textbox you're currently reading is not rendered within canvas. Learn more about how to use
-    Kaboom.js by watching some of my tutorials <a href="https://youtube.com/@jslegenddev" target="_blank">here</a>.`,
-    library: `There are a lot of programming books on my shelves. There is even one in French (I also speak French btw).
-    I probably only read one of them. Who else compulsively buys technical books without ever finishing them?`,
-    exit: `If you want to exit JSLegendDev's portfolio, just close the tab.`,
-    couch: `KEYYYYYIf you want to exit JSLegendDev's portfolio, just close the tab.`,
+export const dialogueData = { 
+    houseA: 'Welcome to the second level, today we gonna teach you the basic print in Java! Please go find a tree on the right side, it gonna tell you some hints!',
+    hint2A: 'Hola! Welcome to the world of Java! in Java we usually use System.out.print() to print something. Please go find a elf for further hint!',
+    hint1A: 'Greetings, traveler! Your friend need to use the ancient magic of Java to print the words "Hello World!"! for you... off you go, seek the Wizard! But be warned — "tis said he brooks no foolishness!"',
+    hint3A: 'Mark my words, young one: you must place a ";" after each statement in Java...Fail to do so, and you shall be bound to this realm for all eternity! Go to the lower left corner to escape this room!',
+
+    houseB: 'Welcome to the second level, today we gonna teach you the basic print in Java! Please go find the windmill on the left side, it gonna tell you some hints!',
+    hint1B: 'Hola! Welcome to the world of Java! in Java we usually use System.out.print() to print something. Please go find a rabbit for further hint!',
+    rabbitB: 'Hi there! Your friend needs to use Java to hop out a little "Bye!" on the screen! As for you, scurry along and find the old man — no need to be worry, he is as friendly as a basket of carrots!',
+    manB: 'Ah, do not forget, my dear — you must add a ";" after each statement in Java. It keeps everything nice and proper, just like it should be! Go to the lower left corner to escape this room!',
+
+    wizardA: 'Ah, splendid!  You’ve reached the final challenge—victory is within grasp!  But first, a magical lesson awaits: the secrets of Function Structure! To begin, seek out the computer in the Study Room! Fail, and you’ll be stuck here forever... just kidding! (Or am I?)',
+    computer: '"BEEP. INITIATING FUNCTION TUTORIAL. BOOP. SYNTAX: [access][name](inputs) {actions}  public addNumbers(int a, int b) {  return(a + b);  } "public" = accessible everywhere. "addNumbers" = function name. PARAMETERS: "int a, int b" are inputs. EXECUTE WITH: addNumbers(3, 5); OUTPUT: 8. END TUTORIAL. BEEP. Go find the bed then.',
+    bedA: 'Yawn... Writing functions is like snuggling into me—start with a comfy header, then curl up with the logic... zzz...public void dream(int hours, String pillow) { System.out.println("You dreamed of " + pillow + " for " + hours + " hours."); } See? "dream" is your function name... void means return nothing. "hours" and "pillow" are your sleepy inputs... Now call dream(8, "unicorns") and... snore... find .. a .. tree .. zzz',
+    tree: 'Wind whispers... your friends task is to find the correct function for addNum with two integer input. For you, please go to the bookshelf next to the bed! Have a nice day!',
+
+    wizardB: 'Ah, splendid!  You’ve reached the final challenge—victory is within grasp!  But first, a magical lesson awaits: the secrets of Function Structure! To begin, seek out the bed in the living room! Fail, and you’ll be stuck here forever... just kidding! (Or am I?)',
+    bedB: 'Yawn... Writing functions is like snuggling into me—start with a comfy header, then curl up with the logic... zzz...public void dream(int hours, String pillow) { System.out.println("You dreamed of " + pillow + " for " + hours + " hours."); } See? "dream" is your function name... void means return nothing. "hours" and "pillow" are your sleepy inputs... Now call dream(8, "unicorns") and... snore... find .. a .. sofa .. zzz',
+    sofa: 'INITIATING FUNCTION TUTORIAL. SYNTAX: [access][name](inputs) {actions}  public addNumbers(int a, int b) {  return(a + b);  } "public" = accessible everywhere. "addNumbers" = function name. PARAMETERS: "int a, int b" are inputs. EXECUTE WITH: addNumbers(3, 5); OUTPUT: 8. END TUTORIAL. BEEP. Go find the desk then.',
+    desk: 'your friends task is to find the correct non-return function called minus with two integer input. For you, please go to the tree next to the bed! Have a nice day!',
   };
 
   export const quizData = {
@@ -28,16 +27,15 @@ export const dialogueData = {
       question: "How many trees are present in total",
       options: ["8", "16", "24", "23"],
       correctAnswer: "24",
-    },
-    level2: {
-      question: "How many windows are present in total?",
-      options: ["1", "2", "3", "4"],
-      correctAnswer: "3",
-    },
+    }, 
     level3: {
-      question: "What is the capital of France?",
-      options: ["Paris", "London", "Berlin", "Madrid"],
-      correctAnswer: "Paris",
-    }
+      question: "What is the correct answer for java function?",
+      options: ["public addNumber(a, b){return a+b}", 
+        "public addNumber(int a, int b){return a+b}", 
+        "public void minus(int a, int b){return a-b;}", 
+        "public void minus(a, b){return a-b;}"],
+      correctAnswer_A: "public addNumber(int a, int b){return a+b}",
+      correctAnswer_B: "public void minus(int a, int b){return a-b;}",
+    }, 
     // Add more for additional levels
   };

@@ -33,20 +33,81 @@ document.body.appendChild(quizUI);
 
 async function showQuiz(level) {
   console.log("Showing quiz for level:", level);
-  const quiz = quizData[`level${level}`];
+  // const quiz = quizData[`level${level}`];
+  // if (!quiz) {
+  //   console.log("Quiz data not found for level:", level);
+  //   return;
+  // }
+
+  quizUI.style.display = "block";
+  const optionsDiv = document.getElementById("quiz-options");
+  optionsDiv.innerHTML = "";
+
+  let quiz;
+  if (level === 2) {
+    quiz = user.uid === gameData.player1
+      ? {
+          question: 'Please type exactly: ',
+          correctAnswer: 'System.out.print("Bye!");',
+        }
+      : {
+          question: 'Please type exactly: ',
+          correctAnswer: 'System.out.print("Hello World!");',
+        };
+        document.getElementById("quiz-question").textContent = quiz.question;
+
+    // Record quiz open time
+    await recordQuizTime("open", level);
+
+    // Create a text input and submit button
+    const input = document.createElement("input");
+    input.type = "text";
+    input.id = "quiz-input";
+    input.style.margin = "5px";
+    input.style.padding = "10px";
+    input.style.width = "300px";
+
+    const submitButton = document.createElement("button");
+    submitButton.textContent = "Submit";
+    submitButton.style.margin = "5px";
+    submitButton.style.padding = "10px";
+    submitButton.style.cursor = "pointer";
+    submitButton.style.backgroundColor = "#fff";
+    submitButton.style.color = "#000";
+    submitButton.style.border = "none";
+    submitButton.style.borderRadius = "5px";
+
+    submitButton.onclick = () => checkAnswer(input.value.trim(), quiz.correctAnswer, level);
+
+    optionsDiv.appendChild(input);
+    optionsDiv.appendChild(submitButton);
+  } else {
+    quiz = quizData[`level${level}`];
+  }
+
   if (!quiz) {
     console.log("Quiz data not found for level:", level);
     return;
   }
+  console.log("quiz object:", quiz);
+  console.log("quiz.options:", quiz.options);
+  console.log("quiz.question:", quiz.question);
+  
 
-  quizUI.style.display = "block";
+  let correctAnswer;
+  if (level === 3) {
+    correctAnswer = user.uid === gameData.player1 ? quiz.correctAnswer_A : quiz.correctAnswer_B;
+  } else {
+    correctAnswer = quiz.correctAnswer;
+  }
+
   document.getElementById("quiz-question").textContent = quiz.question;
 
   // Record quiz open time
   await recordQuizTime("open", level);
 
-  const optionsDiv = document.getElementById("quiz-options");
-  optionsDiv.innerHTML = "";
+  // const optionsDiv = document.getElementById("quiz-options");
+  // optionsDiv.innerHTML = "";
   quiz.options.forEach((option) => {
     const button = document.createElement("button");
     button.textContent = option;
@@ -59,7 +120,7 @@ async function showQuiz(level) {
     button.style.borderRadius = "5px";
     button.onmouseover = () => (button.style.backgroundColor = "#ddd");
     button.onmouseout = () => (button.style.backgroundColor = "#fff");
-    button.onclick = () => checkAnswer(option, quiz.correctAnswer, level);
+    button.onclick = () => checkAnswer(option, correctAnswer, level);
     optionsDiv.appendChild(button);
   });
 }
@@ -186,12 +247,12 @@ async function loadMap(mapFileName) {
 
             if (boundary.name === "quiz") {
               // Debug: Visualize the quiz boundary
-              map.add([
-                k.rect(boundary.width, boundary.height),
-                k.color(255, 0, 0), // Red for visibility
-                k.pos(boundary.x, boundary.y),
-                k.opacity(0.5),
-              ]);
+              // map.add([
+              //   k.rect(boundary.width, boundary.height),
+              //   k.color(255, 0, 0), // Red for visibility
+              //   k.pos(boundary.x, boundary.y),
+              //   k.opacity(0.5),
+              // ]);
               player.onCollide(boundary.name, () => {
                 console.log("Collided with quiz boundary!");
                 const playerStatus = user.uid === gameData.player1 ? gameData.player1QuizStatus : gameData.player2QuizStatus;
